@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app
+  labels:
+    app: web
+spec:
+  containers:
+    - name: web-app
+      image: po3rin/go_simple:latest
+      env:
+      - name: MSG
+        value: "Hello from the web"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: experiment-app
+  labels:
+    app: experiment
+spec:
+  containers:
+    - name: experiment-app
+      image: po3rin/go_simple:latest
+      env:
+      - name: MSG
+        value: "Hello from the experiment"
