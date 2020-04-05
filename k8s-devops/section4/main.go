@@ -6,12 +6,16 @@ import (
 	"net/http"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-
+func handlerRoot(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "hello k8s!!!")
 }
 
+func handlerHealthz(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "health!!!")
+}
+
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", handlerRoot)
+	http.HandleFunc("/healthz", handlerHealthz)
 	log.Fatal(http.ListenAndServe(":8888", nil))
 }

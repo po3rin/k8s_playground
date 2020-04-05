@@ -16,6 +16,32 @@ spec:
     spec:
       containers:
         - name: demo
-          image: cloudnatived/demo:hello
+          image: po3rin/myhello:latest
+          securityContext:
+            runAsUser: 1000
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["all"]
           ports:
           - containerPort: 8888
+          resources:
+            requests:
+              memory: "10Mi"
+              cpu: "100m"
+            limits:
+              memory: "20Mi"
+              cpu: "250m"
+          livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 8888
+              initialDelaySeconds: 5
+              periodSeconds: 3
+          readinessProbe:
+              httpGet:
+                path: /healthz
+                port: 8888
+              initialDelaySeconds: 5
+              periodSeconds: 3
