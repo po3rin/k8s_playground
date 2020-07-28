@@ -1,0 +1,18 @@
+alertmanager:
+  persistentVolume:
+    size: 1Gi
+    storageClass: "standard"
+server:
+  persistentVolume:
+    size: 1Gi
+    storageClass: "standard"
+  retention: "3d"
+  global:
+    ## How frequently to scrape targets by default
+    scrape_interval: 3m
+    ## How long until a scrape request times out
+    scrape_timeout: 10s
+    ## How frequently to evaluate rules
+    evaluation_interval: 3m
+pushgateway:
+  enabled: false
