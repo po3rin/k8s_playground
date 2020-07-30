@@ -5,16 +5,11 @@ repositories:
 releases:
   - name: loki
     namespace: monitor
-    chart: loki/loki
-    version: 0.30.2
-    # set:
-    # - name: rbac.create
-    #   value: false
-    #
+    chart: loki
+
   - name: promtail
     namespace: monitor
-    chart: loki/promtail
-    version: 0.23.4
+    chart: promtail
     set: 
     - name: loki.serviceName
       value: "loki"  # Defaults to "${RELEASE}-loki" if not set
