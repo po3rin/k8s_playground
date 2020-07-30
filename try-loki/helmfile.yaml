@@ -10,7 +10,4 @@ releases:
   - name: promtail
     namespace: monitor
     chart: promtail
-    set: 
-    - name: loki.serviceName
-      value: "loki"  # Defaults to "${RELEASE}-loki" if not set
 
